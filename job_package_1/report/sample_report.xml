@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+
+        <template id="report_sample_view">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <h2>Report title</h2>
+                            <p>this is a sample report.</p>
+                            <p>You should be able to convert this PDF(done) and Word format.</p>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <record id="report_sample" model="ir.actions.report">
+            <field name="name">Sample</field>
+            <field name="model">job.package.freelancer</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">job_package_1.report_sample_view</field>
+            <field name="report_file">job_package_1.report_sample</field>
+            <field name="binding_model_id" ref="model_job_package_freelancer"/>
+            <field name="binding_type">report</field>
+            <!-- Save report as attachment -->
+            <field name="attachment">'Sample.pdf'</field>
+        </record>
+
+
+    </data>
+</odoo>
