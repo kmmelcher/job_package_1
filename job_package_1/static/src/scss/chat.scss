@@ -1,0 +1,10 @@
+/*Only screens resolutions with width above 1534px are able to
+see the chat on the right site of the screen*/
+@media ( min-width: 1534px) {
+    .o_FormRenderer_chatterContainer {
+        /* This attribute needs to be overridden, so that 
+        when you hide the o_attachment_preview div, the chat won't occupy a lot
+        of space on the view */
+        width: auto; 
+    }
+}
