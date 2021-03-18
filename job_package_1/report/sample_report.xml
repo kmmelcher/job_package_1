@@ -9,6 +9,7 @@
                             <h2>Report title</h2>
                             <p>this is a sample report.</p>
                             <p>You should be able to convert this PDF(done) and Word format.</p>
+                            <p><span t-field="o.contract_body"/></p>
                         </div>
                     </t>
                 </t>
@@ -27,6 +28,18 @@
             <field name="attachment">'Sample.pdf'</field>
         </record>
 
+        <!-- Add an option in Action dropdown in job.package.freelancer to generate an attachment -->
+        <record model="ir.actions.server" id="action_contract_generate">
+            <field name="name">Contract Generate</field>
+            <field name="model_id" ref="model_job_package_freelancer"/>
+            <field name="binding_model_id" ref="model_job_package_freelancer" />
+            <field name="binding_view_types">list,form</field>
+            <field name="state">code</field>
+            <field name="code">
+              if records:
+                  action = records.action_get_attachment()
+            </field>
+        </record>
 
     </data>
 </odoo>

@@ -5,5 +5,6 @@
                 <link rel="stylesheet" type="text/scss" href="/job_package_1/static/src/scss/chat.scss"/>
             </xpath>
         </template>
+		
     </data>
 </odoo>
