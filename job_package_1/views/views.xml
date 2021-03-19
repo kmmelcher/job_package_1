@@ -88,8 +88,12 @@
                       <field name="parent_id"/>
                       <field name="coach_id"/>
                   </group>
+                  
               </group>
               <notebook>
+                <page name="contract_body" string="Contract Body">
+                  <field name="contract_body" widget='html'/>
+                </page>
                   <page name="public" string="Work Information">
                       <div id="o_work_employee_container"> <!-- These two div are used to position org_chart -->
                           <div id="o_work_employee_main">
@@ -222,6 +226,9 @@
         parent="job_package_menu_root" 
         sequence="1" 
         action="job_package_freelancer_action"/>
+
+        
+    
 
   </data>
 </odoo>
