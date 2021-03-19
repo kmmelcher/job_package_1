@@ -32,6 +32,11 @@ class JobPackageFreelancer(models.Model):
 
     @api.model
     def create(self, vals):
+        """
+        This overrides the create method to update
+        the contract body  and calls 'set_contract_html_dynamic' method
+        to set values in the contract body in vals.
+        """
         if vals.get("contract_body"):
             contract_body = vals.get('contract_body')
             vals['contract_body'] = self.set_contract_html_dynamic(contract_body, vals)
@@ -39,6 +44,11 @@ class JobPackageFreelancer(models.Model):
         return res
 
     def write(self, vals):
+        """
+        This overrides the write method to update
+        the contract body and calls 'set_contract_html_dynamic' method
+        to set values in the contract body in vals.
+        """
         if vals.get("contract_body"):
             contract_body = vals.get('contract_body')
             vals['contract_body'] = self.set_contract_html_dynamic(contract_body)
@@ -46,6 +56,11 @@ class JobPackageFreelancer(models.Model):
         return res
 
     def set_contract_html_dynamic(self, contract_body, vals={}):
+        """
+        This method get the list of dynamic tags in the contract body
+        by calling 'find_dynamic_tags' and then replaces 
+        the value 
+        """
         dynamic_tags = find_dynamic_tags(contract_body, '${', '}')
         for tag in dynamic_tags:
             tag_attr = tag.replace('${object.', '').replace('}', '')
