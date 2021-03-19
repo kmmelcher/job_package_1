@@ -15,7 +15,7 @@ def find_dynamic_tags(string, start, end):
     list_x = [0] * string_length
     list_y = [0] * string_length 
   
-    # find occurrence of "a" and "b" in string "s" 
+    # find occurrence of "start" and "end" in string "string"
     for i in range(string_length): 
           
         if (string[i: start_length + i] == start): 
@@ -28,27 +28,27 @@ def find_dynamic_tags(string, start, end):
     non_duplicate_strings = list()
   
     # go through all the positions to find  
-    # occurrence of "a" first. 
+    # occurrence of "start" first. 
     curr_substr = "" 
     for i in range(string_length): 
       
-        # if we found occurrence of "a". 
+        # if we found occurrence of "start". 
         if (list_x[i]): 
           
             # then go through all the positions 
-            # to find occurrence of "b". 
+            # to find occurrence of "end". 
             for j in range( i, string_length): 
               
-                # if we do found "b" at index 
+                # if we do found "end" at index 
                 # j then add it to already 
                 # existed substring. 
                 if (not list_y[j]): 
                     curr_substr += string[j] 
   
-                # if we found occurrence of "b". 
+                # if we found occurrence of "end". 
                 if (list_y[j]): 
                   
-                    # now add string "b" to  
+                    # now add string "end" to  
                     # already existed substing. 
                   
                     curr_substr += string[j: end_length + j] 
