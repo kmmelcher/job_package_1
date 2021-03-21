@@ -17,7 +17,7 @@
         </template>
 
         <record id="report_sample" model="ir.actions.report">
-            <field name="name">Sample</field>
+            <field name="name">Contract</field>
             <field name="model">job.package.freelancer</field>
             <field name="report_type">qweb-pdf</field>
             <field name="report_name">job_package_1.report_sample_view</field>
@@ -25,7 +25,7 @@
             <field name="binding_model_id" ref="model_job_package_freelancer"/>
             <field name="binding_type">report</field>
             <!-- Save report as attachment -->
-            <field name="attachment">'Sample.pdf'</field>
+            <field name="attachment">'Contract.pdf'</field>
         </record>
 
         <!-- Add an option in Action dropdown in job.package.freelancer to generate an attachment -->

@@ -74,7 +74,7 @@ class JobPackageFreelancer(models.Model):
 
     def action_get_attachment(self):
         """ this method generates a new attachment with contract body pdf """
-        self.env['ir.attachment'].search([('res_model','=',self._name), ('res_id','=', self.id)]).unlink()
+        self.env['ir.attachment'].search([('res_model','=',self._name), ('res_id','=', self.id), ('name', '=', 'Contract.pdf')]).unlink()
         pdf = self.env.ref('job_package_1.report_sample')._render_qweb_pdf(self.ids)
         return {
               'type': 'ir.actions.client',
