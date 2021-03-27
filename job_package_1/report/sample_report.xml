@@ -1,45 +1,96 @@
 <odoo>
     <data>
-
-        <template id="report_sample_view">
+        <!-- Report 1 -->
+        <template id="report_sample_1_view">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="o">
                     <t t-call="web.external_layout">
-                        <div class="page">
-                            <h2>Report title</h2>
-                            <p>this is a sample report.</p>
-                            <p>You should be able to convert this PDF(done) and Word format.</p>
-                            <p><span t-field="o.contract_body"/></p>
-                        </div>
+                        <span t-raw="o.get_contract_html_dynamic()"/>
                     </t>
                 </t>
             </t>
         </template>
 
-        <record id="report_sample" model="ir.actions.report">
+        <record id="report_sample_1" model="ir.actions.report">
             <field name="name">Contract</field>
             <field name="model">job.package.freelancer</field>
             <field name="report_type">qweb-pdf</field>
-            <field name="report_name">job_package_1.report_sample_view</field>
-            <field name="report_file">job_package_1.report_sample</field>
+            <field name="report_name">job_package_1.report_sample_1_view</field>
+            <field name="report_file">job_package_1.report_sample_1</field>
             <field name="binding_model_id" ref="model_job_package_freelancer"/>
             <field name="binding_type">report</field>
             <!-- Save report as attachment -->
-            <field name="attachment">'Contract.pdf'</field>
+            <field name="attachment">'Contract1.pdf'</field>
         </record>
 
-        <!-- Add an option in Action dropdown in job.package.freelancer to generate an attachment -->
-        <record model="ir.actions.server" id="action_contract_generate">
-            <field name="name">Contract Generate</field>
-            <field name="model_id" ref="model_job_package_freelancer"/>
-            <field name="binding_model_id" ref="model_job_package_freelancer" />
-            <field name="binding_view_types">list,form</field>
-            <field name="state">code</field>
-            <field name="code">
-              if records:
-                  action = records.action_get_attachment()
-            </field>
+        <!-- Report 2 -->
+        <template id="report_sample_2_view">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <span t-raw="o.get_contract_html_dynamic()"/>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <record id="report_sample_2" model="ir.actions.report">
+            <field name="name">Contract</field>
+            <field name="model">job.package.freelancer</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">job_package_1.report_sample_2_view</field>
+            <field name="report_file">job_package_1.report_sample_2</field>
+            <field name="binding_model_id" ref="model_job_package_freelancer"/>
+            <field name="binding_type">report</field>
+            <!-- Save report as attachment -->
+            <field name="attachment">'Contract2.pdf'</field>
         </record>
 
+        <!-- Report 3 -->
+        <template id="report_sample_3_view">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <span t-raw="o.get_contract_html_dynamic()"/>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <record id="report_sample_3" model="ir.actions.report">
+            <field name="name">Contract</field>
+            <field name="model">job.package.freelancer</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">job_package_1.report_sample_3_view</field>
+            <field name="report_file">job_package_1.report_sample_3</field>
+            <field name="binding_model_id" ref="model_job_package_freelancer"/>
+            <field name="binding_type">report</field>
+            <!-- Save report as attachment -->
+            <field name="attachment">'Contract3.pdf'</field>
+        </record>
+
+        <!-- Report 4 -->
+        <template id="report_sample_4_view">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <span t-raw="o.get_contract_html_dynamic()"/>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <record id="report_sample_4" model="ir.actions.report">
+            <field name="name">Contract</field>
+            <field name="model">job.package.freelancer</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">job_package_1.report_sample_4_view</field>
+            <field name="report_file">job_package_1.report_sample_4</field>
+            <field name="binding_model_id" ref="model_job_package_freelancer"/>
+            <field name="binding_type">report</field>
+            <!-- Save report as attachment -->
+            <field name="attachment">'Contract4.pdf'</field>
+        </record>
+        
     </data>
 </odoo>

@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_job_package_freelancer,access_job_package_freelancer,model_job_package_freelancer,base.group_user,1,1,1,1
+access_job_package_freelancer_report_generation,access_job_package_freelancer_report_generation,model_job_package_freelancer_report_generation,base.group_user,1,1,1,1
