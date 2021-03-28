@@ -5,6 +5,28 @@
                 <link rel="stylesheet" type="text/scss" href="/job_package_1/static/src/scss/chat.scss"/>
             </xpath>
         </template>
-		
+
+        <template id="custom_report_assets_pdf" inherit_id="web.report_assets_pdf">
+             <xpath expr="." position="inside">
+                <link href="/job_package_1/static/src/css/report_style.css" rel="stylesheet"/>
+            </xpath>
+        </template>
+
+        <record id="freelancer_email_template" model="mail.template">
+            <field name="name">Job Package : Send Freelancer Contract Email</field>
+            <field name="model_id" ref="job_package_1.model_job_package_freelancer"/>
+            <field name="subject">Freelancer Contract</field>
+            <field name="email_from">${(object.work_email) | safe}</field>
+            <field name="partner_to">${object.user_id.partner_id.id}</field>
+            <field name="body_html" type="html">
+            	<div style="margin: 0px; padding: 0px;">
+				    <p style="margin: 0px; padding: 0px; font-size: 12px;">
+				        Hello,
+				        This is the sample email
+				    </p>
+				</div>
+			</field>
+		</record>
+
     </data>
 </odoo>

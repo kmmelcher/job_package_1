@@ -11,30 +11,25 @@ CONTRACT_BODY = """
             margin: 0;
             padding: 0;
         }
-
         ol > li {
             display: table;
             counter-increment: item;
             margin-bottom: 0.6em;
         }
-
         ol > li:before {
             content: counters(item, ".") ". ";
             display: table-cell;
             padding-right: 0.6em;    
         }
-
         li ol > li {
             margin: 0;
         }
-
         li ol > li:before {
             content: counters(item, ".") " ";
         }
     </style>
     
     <ol class="ol-strong">
-
         <li>Lorem ipsum:
             <ol class="ol-normal">
                 <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Mauris posuere turpis vitae sem ullamcorper, at pellentesque justo interdum.Cras tempor erat ac posuere varius.</li>

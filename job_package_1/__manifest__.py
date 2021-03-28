@@ -20,12 +20,13 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','hr'],
+    'depends': ['base','hr', 'mail', 'utm'],
 
     # always loaded
     'data': [
         'security/ir.model.access.csv',
         'report/sample_report.xml',
+        'wizard/report_wizard.xml',
         'views/views.xml',
         'views/templates.xml',
     ],
