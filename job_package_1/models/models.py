@@ -30,29 +30,6 @@ class JobPackageFreelancer(models.Model):
 
     contract_body = fields.Html(string='Contract Body', translate=True, default=CONTRACT_BODY)
 
-    # @api.model
-    # def create(self, vals):
-    #     """
-    #     This overrides the create method to update
-    #     the contract body  and calls 'set_contract_html_dynamic' method
-    #     to set values in the contract body in vals.
-    #     """
-    #     res = super(JobPackageFreelancer, self).create(vals)
-    #     if vals.get("contract_body"):
-    #         res.action_get_all_attachment()
-    #     return res
-
-    # def write(self, vals):
-    #     """
-    #     This overrides the write method to update
-    #     the contract body and calls 'set_contract_html_dynamic' method
-    #     to set values in the contract body in vals.
-    #     """
-    #     res = super(JobPackageFreelancer, self).write(vals)
-    #     if vals.get("contract_body"):
-    #         self.action_get_all_attachment()
-    #     return res
-
     def get_contract_html_dynamic(self):
         """
         This method get the list of dynamic tags in the contract body
@@ -122,7 +99,7 @@ class JobPackageFreelancer(models.Model):
         if template.lang:
             lang = template._render_lang(self.ids)[self.id]
         attachment_ids = self.env['ir.attachment'].search([('res_model','=',self._name), ('res_id','=', self.id)])
-        ctx = {
+        context = {
             'default_model': 'job.package.freelancer',
             'default_res_id': self.ids[0],
             'default_use_template': bool(template_id),
@@ -138,5 +115,5 @@ class JobPackageFreelancer(models.Model):
             'views': [(False, 'form')],
             'view_id': False,
             'target': 'new',
-            'context': ctx,
+            'context': context,
         }
