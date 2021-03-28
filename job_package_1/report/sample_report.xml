@@ -12,7 +12,7 @@
         </template>
 
         <record id="report_sample_1" model="ir.actions.report">
-            <field name="name">Contract</field>
+            <field name="name">Contract 1</field>
             <field name="model">job.package.freelancer</field>
             <field name="report_type">qweb-pdf</field>
             <field name="report_name">job_package_1.report_sample_1_view</field>
@@ -35,7 +35,7 @@
         </template>
 
         <record id="report_sample_2" model="ir.actions.report">
-            <field name="name">Contract</field>
+            <field name="name">Contract 2</field>
             <field name="model">job.package.freelancer</field>
             <field name="report_type">qweb-pdf</field>
             <field name="report_name">job_package_1.report_sample_2_view</field>
@@ -58,7 +58,7 @@
         </template>
 
         <record id="report_sample_3" model="ir.actions.report">
-            <field name="name">Contract</field>
+            <field name="name">Contract 3</field>
             <field name="model">job.package.freelancer</field>
             <field name="report_type">qweb-pdf</field>
             <field name="report_name">job_package_1.report_sample_3_view</field>
@@ -81,7 +81,7 @@
         </template>
 
         <record id="report_sample_4" model="ir.actions.report">
-            <field name="name">Contract</field>
+            <field name="name">Contract 4</field>
             <field name="model">job.package.freelancer</field>
             <field name="report_type">qweb-pdf</field>
             <field name="report_name">job_package_1.report_sample_4_view</field>
