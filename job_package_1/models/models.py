@@ -9,6 +9,7 @@ class JobPackageFreelancer(models.Model):
     _name = 'job.package.freelancer'
     _description = 'Freelancer'
     _inherit = ['hr.employee', 'mail.thread', 'mail.activity.mixin', 'utm.mixin']
+    _description = 'Freelancer for job package'
 
     #Ignore
     category_ids = fields.Many2many(

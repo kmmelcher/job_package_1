@@ -1,9 +1,8 @@
+.ol-strong { font-weight: bold; }
+.ol-normal { font-weight: normal;}
 ol {
 	padding-left: 40px;
 }
-
-.ol-strong { font-weight: bold; }
-.ol-normal { font-weight: normal;}
 ol {
     list-style-type: none;
     counter-reset: item;
