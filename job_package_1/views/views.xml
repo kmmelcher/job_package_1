@@ -40,10 +40,10 @@
               name="%(action_report_generation)d" 
               string="Generate Contract" 
               type="action"/>
-            <button string="Send Email" 
-              name="action_email_send" 
-              type="object" class="btn-primary"/>
-              
+            <button 
+              name="%(action_send_email)d" 
+              string="Send Email"
+              type="action" class="btn-primary"/>  
           </header>
           <sheet>
               <div name="button_box" class="oe_button_box">
