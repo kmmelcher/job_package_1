@@ -5,6 +5,7 @@ from odoo import models, fields, api
 class ReportGenerationWizard(models.TransientModel):
 
     _name = 'job.package.freelancer.report.generation'
+    _description = "Report Generation Wizard"
 
     contract_report_type = fields.Selection([
             ('report_1', 'Report 1'),
@@ -27,7 +28,7 @@ class ReportGenerationWizard(models.TransientModel):
 class SendEmailWizard(models.TransientModel):
 
     _name = 'job.package.freelancer.send.email'
-
+    _description = "Send Freelancer Email Wizard"
 
     def send_email_1(self):
         """

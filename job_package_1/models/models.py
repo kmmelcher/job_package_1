@@ -101,6 +101,8 @@ class JobPackageFreelancer(models.Model):
         
         email_type = self.env.context.get('email_type')
         
+        email_attachment_names = list()
+
         if email_type == '1':
             email_attachment_names = ['Contract1.pdf']
 
