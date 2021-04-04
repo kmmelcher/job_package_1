@@ -99,7 +99,26 @@ class JobPackageFreelancer(models.Model):
         template = self.env['mail.template'].browse(template_id)
         if template.lang:
             lang = template._render_lang(self.ids)[self.id]
-        attachment_ids = self.env['ir.attachment'].search([('res_model','=',self._name), ('res_id','=', self.id)])
+        
+        email_type = self.env.context.get('email_type')
+        
+        email_attachment_names = list()
+
+        if email_type == '1':
+            email_attachment_names = ['Contract1.pdf']
+
+        elif email_type == '2':
+            email_attachment_names = ['Contract1.pdf', 'Contract2.pdf']
+
+        elif email_type == '3':
+            email_attachment_names = ['Contract3.pdf']
+    
+        if email_attachment_names:
+            attachment_ids = self.env['ir.attachment'].search([('res_model','=',self._name), ('res_id','=', self.id), ('name', 'in', email_attachment_names)])
+
+        else:
+            attachment_ids = self.env['ir.attachment'].search([('res_model','=',self._name), ('res_id','=', self.id)])
+
         context = {
             'default_model': 'job.package.freelancer',
             'default_res_id': self.ids[0],
