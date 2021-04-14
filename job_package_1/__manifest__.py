@@ -29,10 +29,11 @@
         'wizard/wizard_views.xml',
         'views/views.xml',
         'views/templates.xml',
+        'data/data.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
-        'demo/demo.xml',
+        'data/demo.xml',
     ],
     'application': True,
 }
