@@ -26,13 +26,14 @@
     'data': [
         'security/ir.model.access.csv',
         'report/sample_report.xml',
-        'wizard/report_wizard.xml',
+        'wizard/wizard_views.xml',
         'views/views.xml',
         'views/templates.xml',
+        'data/data.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
-        'demo/demo.xml',
+        'data/demo.xml',
     ],
     'application': True,
 }

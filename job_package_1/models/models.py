@@ -1,15 +1,31 @@
 # -*- coding: utf-8 -*-
 
 import base64
-from odoo import models, fields, api
 from .contract import CONTRACT_BODY
 from .helper import find_dynamic_tags
+
+from odoo import models, fields, api, SUPERUSER_ID
+
 
 class JobPackageFreelancer(models.Model):
     _name = 'job.package.freelancer'
     _description = 'Freelancer'
     _inherit = ['hr.employee', 'mail.thread', 'mail.activity.mixin', 'utm.mixin']
     _description = 'Freelancer for job package'
+
+
+    #Relation between Freelancer and Job
+    job_position_ids = fields.Many2many(
+        'job.package.job',
+        'package_freelancer_job_rel',
+        'package_freelancer_id', 'job_position_id', 
+        "Applied Job",
+        readonly=True)
+
+    #Recruitment process stage (This is where the issue lives)
+    stage_id = fields.Many2one('job.package.stage', 'Stage', ondelete='restrict', tracking=True,
+                               store=True, readonly=False,
+                               copy=False, index=True, group_expand='_read_group_stage_ids')
 
     #Ignore
     category_ids = fields.Many2many(
@@ -18,6 +34,13 @@ class JobPackageFreelancer(models.Model):
 
     #Boolean field to hide/show attachments on the right side of the screen
     show_attachments_preview = fields.Boolean(default=False)
+
+    @api.model
+    def _read_group_stage_ids(self, stages, domain, order):
+        """ Return all job process stages to display on freelancers
+        stage view """
+        stage_ids = stages._search([], order=order, access_rights_uid=SUPERUSER_ID)
+        return stages.browse(stage_ids)
 
     def show_attachments(self):
         """ Show attachments preview
@@ -99,7 +122,26 @@ class JobPackageFreelancer(models.Model):
         template = self.env['mail.template'].browse(template_id)
         if template.lang:
             lang = template._render_lang(self.ids)[self.id]
-        attachment_ids = self.env['ir.attachment'].search([('res_model','=',self._name), ('res_id','=', self.id)])
+        
+        email_type = self.env.context.get('email_type')
+        
+        email_attachment_names = list()
+
+        if email_type == '1':
+            email_attachment_names = ['Contract1.pdf']
+
+        elif email_type == '2':
+            email_attachment_names = ['Contract1.pdf', 'Contract2.pdf']
+
+        elif email_type == '3':
+            email_attachment_names = ['Contract3.pdf']
+    
+        if email_attachment_names:
+            attachment_ids = self.env['ir.attachment'].search([('res_model','=',self._name), ('res_id','=', self.id), ('name', 'in', email_attachment_names)])
+
+        else:
+            attachment_ids = self.env['ir.attachment'].search([('res_model','=',self._name), ('res_id','=', self.id)])
+
         context = {
             'default_model': 'job.package.freelancer',
             'default_res_id': self.ids[0],
@@ -118,3 +160,38 @@ class JobPackageFreelancer(models.Model):
             'target': 'new',
             'context': context,
         }
+
+
+class Job(models.Model):
+    """
+    Job Positions model linked to Freelancers
+    """
+    _name = 'job.package.job'
+    _description = "Freelancer's Job Positions"
+
+    name = fields.Char(string='Job Position',help="Job Position's Name", required=True)
+    color = fields.Integer("Color Index", default=10)
+    is_favorite = fields.Boolean()
+
+    package_freelancer_ids = fields.Many2many(
+        'job.package.freelancer', 
+        'package_freelancer_job_rel',
+        'job_position_id', 'package_freelancer_id', 
+        string='Freelancers')
+
+
+class Stage(models.Model):
+    """
+    Recruitment Stages model for a freelancer to be recruited in a Job Position.
+    """
+    _name = 'job.package.stage'
+    _description = "Recruitment Stages"
+    _order = 'sequence'
+
+    name = fields.Char(string='Name',help="Stage Name", required=True)
+    sequence = fields.Integer(
+        "Sequence",
+        help="Gives the sequence order when displaying a list of stages.")
+    fold = fields.Boolean(
+        "Folded in Kanban",
+        help="This stage is folded in the kanban view when there are no records in that stage to display.")

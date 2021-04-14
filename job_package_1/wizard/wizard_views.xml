@@ -1,0 +1,68 @@
+<odoo>
+	<data>
+		<record model="ir.ui.view" id="view_report_generation_wizard_form">
+			<field name="name">view.report.generation.wizard.form</field>
+			<field name="model">job.package.freelancer.report.generation</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Contract Report Generation">
+					<sheet>		                	
+						<group> 
+							<field name="contract_report_type"/>
+						</group>
+					</sheet>
+					<footer>
+						<button name="generate_contract_report" type="object" string="Generate Contract" class="oe_highlight"/>
+							or
+						<button special="cancel" string="Cancel"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="action_report_generation">
+			<field name="name">Freelancer Contract Generation</field>
+			<field name="res_model">job.package.freelancer.report.generation</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_send_email_wizard_form">
+			<field name="name">view.send.email.wizard.form</field>
+			<field name="model">job.package.freelancer.send.email</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Send Email">
+					<sheet>
+						<div class="row text-center">
+							<div class="col-md-12" style="display:contents;">
+								<div class="col-md-4">
+									<button name="send_email_1" type="object" string="Send Email 1" class="oe_highlight"/>		
+								</div>
+								<div class="col-md-4">
+									<button name="send_email_2" type="object" string="Send Email 2" class="oe_highlight"/>
+								</div>
+
+								<div class="col-md-4">
+									<button name="send_email_3" type="object" string="Send Email 3" class="oe_highlight"/>	
+								</div>
+							</div>
+						</div>       	
+						
+					</sheet>
+					<footer>
+						<button special="cancel" string="Cancel"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="action_send_email">
+			<field name="name">Send Email</field>
+			<field name="res_model">job.package.freelancer.send.email</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+
+	</data>
+</odoo>
